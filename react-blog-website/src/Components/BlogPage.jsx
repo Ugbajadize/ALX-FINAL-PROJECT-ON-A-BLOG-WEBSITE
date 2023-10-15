@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import BlogCards from './BlogCards'; 
+import BlogCards from './BlogCards';
+import Pagination from './Pagination'; 
 
 
 const BlogPage = () => {
@@ -12,11 +13,11 @@ const BlogPage = () => {
 
     useEffect(() => {
         async function fetchBlogs() {
-            let url = 'http://localhost:5000/blogs?pages=${currentPage}&limit=${pageSize}';
+            let url = `http://localhost:5000/blogs?pages=${currentPage}&limit=${pageSize}`;
 
             // filter by category
             if(selectedCategory){
-                url += '&category=${selectedCategory}';
+                url += `&category=${selectedCategory}`;
             }
             const response = await fetch(url);
             const data = await response.json();
@@ -50,7 +51,7 @@ const BlogPage = () => {
 
         {/* pagination section */}
         <div>
-            <Pagination/> 
+            <Pagination onPageChange={handlePageChange} currentPage={currentPage} blogs={blogs} pageSize={pageSize}/> 
         </div>
     </div>
   )
