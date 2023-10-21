@@ -40,7 +40,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/blogs/:id",
-        element: <SingleBlog/>
+        element: <SingleBlog/>,
+        Loader: ({params}) => fetch(`http://localhost:5000/blogs/${params.id}`)
       }
     ]
   },
@@ -48,7 +49,7 @@ const router = createBrowserRouter([
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  <React.StrictMode>  
      <RouterProvider router={router} />
   </React.StrictMode>,
 )

@@ -50,16 +50,32 @@ const BlogPage = () => {
 
         {/* blogcards section */}
         <div className='flex flex-col lg:flex-row gap-12'>
+            <div className='lg:flex-1'>
             
             {/* blog cards components */}
-            <BlogCards blogs={blogs} currentPage={currentPage} selectedCategory={selectedCategory} pageSize={pageSize}/>
-        </div>
+            <BlogCards
+              blogs={blogs}
+              currentPage={currentPage}
+              selectedCategory={selectedCategory}
+              pageSize={pageSize}
+              />
+    
         {/* pagination section */}
-        <div>
-            <Pagination onPageChange={handlePageChange} currentPage={currentPage} blogs={blogs} pageSize={pageSize}/>
+            <Pagination
+             onPageChange={handlePageChange}
+             currentPage={currentPage}
+             blogs={blogs}
+             pageSize={pageSize}
+             />
+        </div>
+
+        {/* sidebar container */}
+        <div className='lg:w-1/4'>
+            <SideBar/>
+            </div>
         </div>
     </div>
-  )
-}
+  );
+};
 
 export default BlogPage
